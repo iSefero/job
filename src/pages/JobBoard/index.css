@@ -1,0 +1,24 @@
+.blockPagination {
+    width: 100%;
+    border-radius: 10px;
+    background: white;
+    padding: 5px 30px 0px 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    font-size: 20px;
+}
+
+.activeItem {
+    text-align: center;
+    width: 25px;
+    color: #5876C5;
+    border-bottom: 3px solid #5876C5;
+}
+
+.item {
+    text-align: center;
+    width: 25px;
+}

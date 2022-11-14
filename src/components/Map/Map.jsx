@@ -1,44 +1,28 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-
+import {GoogleMap, MarkerF, useJsApiLoader} from '@react-google-maps/api';
+import GpsMarker from "../../assets/icon/GpsMarker.svg"
 const containerStyle = {
-  width: '100%',
-  height: '220px'
+  width: "100%",
+  height: '230px',
+  borderRadius: "0px 0px 8px 8px"
 };
 
-
 export function Map({center}) {
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "API_KEY"
+    googleMapsApiKey: "AIzaSyCbIEwE4xnJA3op8yk2jwcghV7yNmN_Kes",
   })
-
-  const API_KEY = process.env.REACT_APP_API_KEY
-
-  const [map, setMap] = React.useState(null)
-
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={10}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
+      zoom={3}
     >
-      { /* Child components, such as markers, info windows, etc. */ }
-      <></>
+      <MarkerF
+        position={center}
+        icon={GpsMarker}/>
     </GoogleMap>
   ) : <></>
 }
